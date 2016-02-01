@@ -1,0 +1,52 @@
+$navbar-default-bg: #3B1108;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  font-weight:bold;
+}
+#logo:hover {
+  color: chocolate;
+  text-decoration: none;
+}
+.centre {
+  text-align: right;
+}
+.jumbotron {
+  background-image: asset_url('tsuyog.png');
+  background-size: cover;
+  height: 550px;
+}
+.jumbotron h1 {
+  font-size: 1.7em;
+  margin-bottom: 20px;
+  color: white;
+}
+.btn-custom {
+  font-size: 1.5em;
+  background-color: #3B1108;
+}
+.footer {
+  margin-top: 20px;
+  padding-top: 5px;
+  border-top: 1px solid #EAEAEA;
+}
+.footer small {
+  float: right;
+}
+.article-title{
+  font-weight:bold;
+  font-size: 1.4em;
+}
+.article-body {
+  border-top: 1px solid #EAEAEA;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
+}
+.list-actions {
+  margin-top: 15px;
+}
