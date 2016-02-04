@@ -22,7 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+ * username should be unique
+ * username should be unique
+ * a valid email
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

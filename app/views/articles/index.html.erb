@@ -9,6 +9,7 @@
         <div class="article-body">
           <%= truncate(article.description,length: 200) %>
         </div>
+        <small>Posted By:<%= article.user.username if article.user %><%= time_ago_in_words(article.created_at) %>ago</small>
         <div class="list-actions">
           <%= link_to "Edit ", edit_article_path(article), class: "btn btn-xs btn-primary" %>
           <%= link_to "Back to Articles List", articles_path, class: "btn btn-xs btn-success" %>

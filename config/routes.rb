@@ -4,6 +4,16 @@ Rails.application.routes.draw do
   #get 'about', to: 'pages#about'
   get 'welcome/home', to: 'welcome#home'
 
+  #signup_route
+  get 'signup', to: 'users#new'
+
+  #posting user options
+  #1
+  # post 'users', to: 'user#create'
+  #2 means we are sing all routes except new action
+  resources :users, except: [:new]
+
+
   resources :articles
 
   # The priority is based upon order of creation: first created -> highest priority.
