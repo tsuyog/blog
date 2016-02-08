@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_author
-    
+
     if current_user != @article.user and !current_user.admin?
       flash[:danger] = "You can not perform operation, which are not created by you"
       redirect_to root_path
