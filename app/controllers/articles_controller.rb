@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_author, only: [:edit, :update, :destroy]
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)
 
@@ -11,7 +14,7 @@ class ArticlesController < ApplicationController
   def create
     #render plain: params[:article].inspect
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       flash[:success] = "Article Has bees saved"
       redirect_to article_path(@article)
@@ -22,21 +25,20 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+
   end
 
   def edit
-    @article = Article.find(params[:id])
+
   end
   def destroy
-    @article = Article.find(params[:id])
+
     @article.destroy
     flash[:danger] ="Article has been deleted"
     redirect_to articles_path
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update_attributes(article_params)
       flash[:success] = "Article Has bees saved"
       redirect_to article_path(@article)
@@ -47,5 +49,17 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def require_author
+    
+    if current_user != @article.user and !current_user.admin?
+      flash[:danger] = "You can not perform operation, which are not created by you"
+      redirect_to root_path
+    end
   end
 end

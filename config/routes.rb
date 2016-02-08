@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   #1
   # post 'users', to: 'user#create'
   #2 means we are sing all routes except new action
+
   resources :users, except: [:new]
 
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
   resources :articles
 
