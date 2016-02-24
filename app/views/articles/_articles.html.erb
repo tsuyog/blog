@@ -9,7 +9,9 @@
             <%= truncate(article.description,length: 200) %>
           </div>
           <small>Posted By:<%= article.user.username if article.user %><%= time_ago_in_words(article.created_at) %>ago</small>
-
+          <% if article.categories.any? %>
+              <p>Categories: <%= render article.categories %></p>
+          <% end %>
           <% if logged_in? && (current_user == article.user || current_user.admin?) %>
               <div class="list-actions">
 

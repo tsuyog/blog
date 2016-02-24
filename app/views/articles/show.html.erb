@@ -23,7 +23,11 @@
   <h4 class="center"><strong>Description:</strong></h4>
   <hr>
   <%= simple_format(@article.description) %>
+  <% if @article.categories.any? %>
+      <p>Categories: <%= render @article.categories %></p>
+  <% end %>
 </div>
+
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
